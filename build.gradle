@@ -22,7 +22,7 @@ plugins {
     id 'base'
 }
 
-group = 'org.beckn'
+group = 'org.beckn.bpp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 11
 
@@ -38,41 +38,8 @@ repositories {
     mavenCentral()
 }
 
-//swaggerSources {
-//    beckn {
-//        def becknYaml = "${rootDir}/src/main/resources/api/beckn-0.9.2.yaml"
-//        def configJson = "${rootDir}/src/main/resources/api/beckn-0.9.2.json"
-//        inputFile = file(becknYaml)
-//        def ignoreFile = "${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
-//        code {
-//            language = 'spring'
-//            configFile = file(configJson)
-//            rawOptions = ['--ignore-file-override', ignoreFile]
-//            components = ['models', 'apis']
-//            dependsOn validation
-//        }
-//    }
-//}
-
-//compileJava {
-//    dependsOn processResources
-//    dependsOn swaggerSources.beckn.code
-//    source "${swaggerSources.beckn.code.outputDir}/src/main/java"
-//}
-
-//sourceSets {
-//    unitTest {
-//        java { srcDir 'src/test/groovy' }
-//        resources { srcDir 'src/test/resources' }
-//        compileClasspath += sourceSets.main.runtimeClasspath
-//    }
-//    main {
-//        java { srcDirs += "${swaggerSources.beckn.code.outputDir}/src/main/java" }
-//    }
-//}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Location {
     private String id;
     private Descriptor descriptor;
-    private Gps gps;
+    private String gps;
     private Address address;
     @JsonProperty("station_code")
     private String stationCode;

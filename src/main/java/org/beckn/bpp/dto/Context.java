@@ -17,7 +17,7 @@ import static java.util.stream.Collectors.toMap;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Context {
-    private Domain domain;
+    private String domain;
     private String country; //TODO Country.code
     private String city; //TODO City.code
     private ActionEnum action;
@@ -40,29 +40,32 @@ public class Context {
     private String key;
     private String ttl;
 
+    public String getAction() {
+        return action.getValue();
+    }
 
     public enum ActionEnum {
-        SEARCH("search"),
-        SELECT("select"),
-        INIT("init"),
-        CONFIRM("confirm"),
-        UPDATE("update"),
-        STATUS("status"),
-        TRACK("track"),
-        CANCEL("cancel"),
-        FEEDBACK("feedback"),
-        SUPPORT("support"),
-        ON_SEARCH("on_search"),
-        ON_SELECT("on_select"),
-        ON_INIT("on_init"),
-        ON_CONFIRM("on_confirm"),
-        ON_UPDATE("on_update"),
-        ON_STATUS("on_status"),
-        ON_TRACK("on_track"),
+        search("search"),
+        select("select"),
+        init("init"),
+        confirm("confirm"),
+        update("update"),
+        status("status"),
+        track("track"),
+        cancel("cancel"),
+        feedback("feedback"),
+        support("support"),
+        on_search("on_search"),
+        on_select("on_select"),
+        on_init("on_init"),
+        on_confirm("on_confirm"),
+        on_update("on_update"),
+        on_status("on_status"),
+        on_track("on_track"),
         ON_CANCEL("on_cancel"),
-        ON_FEEDBACK("on_feedback"),
-        ON_SUPPORT("on_support"),
-        ACK("ack");
+        on_cancel("on_feedback"),
+        on_support("on_support"),
+        ack("ack");
 
         static Map<String, ActionEnum> VALUE_MAP = Arrays.stream(values())
                 .collect(toMap(ActionEnum::getValue, Function.identity()));

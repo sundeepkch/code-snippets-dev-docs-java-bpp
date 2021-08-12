@@ -18,19 +18,19 @@ public class Catalog {
     private Descriptor bppDescriptor;
 
     @JsonProperty("bpp/categories")
-    private List<Category> bppCategories = null;
+    private List<Category> bppCategories;
 
     @JsonProperty("bpp/fulfillments")
-    private List<Fulfillment> bppFulfillments = null;
+    private List<Fulfillment> bppFulfillments;
 
     @JsonProperty("bpp/payments")
-    private List<Payment> bppPayments = null;
+    private List<Payment> bppPayments;
 
     @JsonProperty("bpp/offers")
-    private List<Offer> bppOffers = null;
+    private List<Offer> bppOffers;
 
     @JsonProperty("bpp/providers")
-    private List<Provider> bppProviders = null;
+    private List<Provider> bppProviders;
 
-    private OffsetDateTime exp = null;
+    private OffsetDateTime exp;
 }

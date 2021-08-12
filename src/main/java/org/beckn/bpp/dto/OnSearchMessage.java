@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OnSearchMessage {
-    private Catalog catalog = null;
+    private Catalog catalog;
 }
