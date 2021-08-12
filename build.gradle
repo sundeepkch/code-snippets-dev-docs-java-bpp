@@ -1,0 +1,89 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/spring/' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
+
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.2.RELEASE")
+        classpath('io.swagger.codegen.v3:swagger-codegen-maven-plugin:3.0.16')
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.3.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'base'
+}
+
+group = 'org.beckn'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 11
+
+repositories {
+    jcenter()
+    mavenLocal()
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/spring/' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+    maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
+
+    mavenCentral()
+}
+
+//swaggerSources {
+//    beckn {
+//        def becknYaml = "${rootDir}/src/main/resources/api/beckn-0.9.2.yaml"
+//        def configJson = "${rootDir}/src/main/resources/api/beckn-0.9.2.json"
+//        inputFile = file(becknYaml)
+//        def ignoreFile = "${rootDir}/src/main/resources/api/.swagger-codegen-ignore"
+//        code {
+//            language = 'spring'
+//            configFile = file(configJson)
+//            rawOptions = ['--ignore-file-override', ignoreFile]
+//            components = ['models', 'apis']
+//            dependsOn validation
+//        }
+//    }
+//}
+
+//compileJava {
+//    dependsOn processResources
+//    dependsOn swaggerSources.beckn.code
+//    source "${swaggerSources.beckn.code.outputDir}/src/main/java"
+//}
+
+//sourceSets {
+//    unitTest {
+//        java { srcDir 'src/test/groovy' }
+//        resources { srcDir 'src/test/resources' }
+//        compileClasspath += sourceSets.main.runtimeClasspath
+//    }
+//    main {
+//        java { srcDirs += "${swaggerSources.beckn.code.outputDir}/src/main/java" }
+//    }
+//}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.1'
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.2.8.RELEASE'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

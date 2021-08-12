@@ -1,0 +1,8 @@
+{
+  "library": "spring-mvc",
+  "dateLibrary": "legacy",
+  "hideGenerationTimestamp": true,
+  "modelPackage": "org.beckn.dto",
+  "apiPackage": "org.beckn.api",
+  "invokerPackage": "org.beckn.*"
+}
