@@ -1,0 +1,25 @@
+{
+    "context": {
+        "domain": "local_retail",
+        "country": "string",
+        "city": "string",
+        "action": "on_rating",
+        "core_version": "string",
+        "bap_id": "string",
+        "bap_uri": "string",
+        "bpp_id": "string",
+        "bpp_uri": "string",
+        "transaction_id": "string",
+        "message_id": "string",
+        "timestamp": "2021-06-29T10:52:01.620Z",
+        "key": "string",
+        "ttl": "string"
+    },
+    "message": {
+        "feedback": {
+            "id": "b9e92323-5ff7-4e1f-be43-24e87362b89f",
+            "descriptor": "https://feedback.bpp.com/provider/pooja-stores/2839",
+            "parent_id": "./retail.kirana/ind.blr/pooja-stores@lrdn.bpp.shopez.com.provider"
+        }
+    }
+}
