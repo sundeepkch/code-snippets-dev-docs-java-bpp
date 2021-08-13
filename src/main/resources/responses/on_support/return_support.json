@@ -1,0 +1,23 @@
+{
+    "context": {
+        "domain": "local_retail",
+        "country": "string",
+        "city": "string",
+        "action": "on_support",
+        "core_version": "string",
+        "bap_id": "string",
+        "bap_uri": "string",
+        "bpp_id": "string",
+        "bpp_uri": "string",
+        "transaction_id": "string",
+        "message_id": "string",
+        "timestamp": "2021-06-23T08:24:26.519Z",
+        "key": "string",
+        "ttl": "string"
+    },
+    "message": {
+        "phone": "+919898989898",
+        "email": "support@example.com",
+        "uri": "http://support.bpp.com?order_id=0f8c1e68-c041-427d-9ef4-d4d3e5b22ef9"
+    }
+}

@@ -3,10 +3,7 @@ package org.beckn.bpp.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.beckn.bpp.client.BppApiClient;
 import org.beckn.bpp.common.RestApiClient;
-import org.beckn.bpp.dto.Context;
-import org.beckn.bpp.dto.OnSearchRequest;
-import org.beckn.bpp.dto.Response;
-import org.beckn.bpp.dto.SearchRequest;
+import org.beckn.bpp.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -63,6 +60,205 @@ public class BppApplicationService {
         return Response.of("ACK", null);
     }
 
+    public Response select(SelectRequest request, HttpHeaders headers) {
+        var selectRequest = new OnSelectRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        // get data for the selected items
+        selectRequest = bppClient.getSelectedItemsData();
+
+        //TODO: Call BAP on_select api with the search response
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_select,
+                constructResponseHeaders(),
+                selectRequest,
+                OnSelectRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response init(InitRequest request, HttpHeaders headers) {
+        var onInitRequest = new OnInitRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onInitRequest = bppClient.initializeOrder();
+
+        //TODO: Call BAP on_select api with the search response
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_init,
+                constructResponseHeaders(),
+                onInitRequest,
+                OnInitRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response confirm(ConfirmRequest request, HttpHeaders headers) {
+        var onConfirmRequest = new OnConfirmRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onConfirmRequest = bppClient.confirmOrder();
+
+        //TODO: Call BAP on_confirm api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_confirm,
+                constructResponseHeaders(),
+                onConfirmRequest,
+                OnConfirmRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response status(StatusRequest request, HttpHeaders headers) {
+        var onStatusRequest = new OnStatusRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onStatusRequest = bppClient.getStatus();
+
+        //TODO: Call BAP on_status api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_status,
+                constructResponseHeaders(),
+                onStatusRequest,
+                OnStatusRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response track(TrackRequest request, HttpHeaders headers) {
+        var onTrackRequest = new OnTrackRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onTrackRequest = bppClient.getTracking();
+
+        //TODO: Call BAP on_track api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_track,
+                constructResponseHeaders(),
+                onTrackRequest,
+                OnTrackRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response cancel(CancelRequest request, HttpHeaders headers) {
+        var onCancelRequest = new OnCancelRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onCancelRequest = bppClient.getCancelledOrder();
+
+        //TODO: Call BAP on_cancel api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_cancel,
+                constructResponseHeaders(),
+                onCancelRequest,
+                OnCancelRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response update(UpdateRequest request, HttpHeaders headers) {
+        var onUpdateRequest = new OnUpdateRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onUpdateRequest = bppClient.updateOrder();
+
+        //TODO: Call BAP on_update api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_update,
+                constructResponseHeaders(),
+                onUpdateRequest,
+                OnUpdateRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response rating(RatingRequest request, HttpHeaders headers) {
+        var onRatingRequest = new OnRatingRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onRatingRequest = bppClient.getFeedbackOnRating();
+
+        //TODO: Call BAP on_rating api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_rating,
+                constructResponseHeaders(),
+                onRatingRequest,
+                OnRatingRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
+    public Response support(SupportRequest request, HttpHeaders headers) {
+        var onSupportRequest = new OnSupportRequest();
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        System.out.println("Is headers valid :: " + isHeadersValid);
+        if (!isHeadersValid) return null;
+
+        onSupportRequest = bppClient.getSupportContact();
+
+        //TODO: Call BAP on_support api
+        var url = lookUp(headers);
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_support,
+                constructResponseHeaders(),
+                onSupportRequest,
+                OnSupportRequest.class);
+
+        System.out.println(response);
+
+        return Response.of("ACK", null);
+    }
+
     private boolean validateHeaders(HttpHeaders headers) {
         //TODO: logic to validate the headers
         return !CollectionUtils.isEmpty(headers.get(HttpHeaders.AUTHORIZATION)) ||
@@ -92,4 +288,6 @@ public class BppApplicationService {
         var uri = "http://localhost:8081/bap/";
         return new String[]{uri, publicKey};
     }
+
+
 }

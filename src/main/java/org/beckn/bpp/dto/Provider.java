@@ -3,19 +3,23 @@ package org.beckn.bpp.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Provider {
     private String id;
     private Descriptor descriptor;
+    private BigDecimal rating;
     @JsonProperty("category_id")
     private String categoryId;
     private Time time;

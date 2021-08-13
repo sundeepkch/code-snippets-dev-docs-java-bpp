@@ -3,28 +3,30 @@ package org.beckn.bpp.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Price {
     private String currency;
-    private DecimalValue value;
+    private String value;
     @JsonProperty("estimated_value")
-    private DecimalValue estimatedValue;
+    private String estimatedValue;
     @JsonProperty("computed_value")
-    private DecimalValue computedValue;
+    private String computedValue;
     @JsonProperty("listed_value")
-    private DecimalValue listedValue;
+    private String listedValue;
     @JsonProperty("offered_value")
-    private DecimalValue offeredValue;
+    private String offeredValue;
     @JsonProperty("minimum_value")
-    private DecimalValue minimumValue;
+    private String minimumValue;
     @JsonProperty("maximum_value")
-    private DecimalValue maximumValue;
+    private String maximumValue;
 
 
 }

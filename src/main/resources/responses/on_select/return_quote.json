@@ -1,0 +1,71 @@
+{
+    "context": {
+        "domain": "local_retail",
+        "country": "string",
+        "city": "string",
+        "action": "on_select",
+        "core_version": "string",
+        "bap_id": "string",
+        "bap_uri": "string",
+        "bpp_id": "string",
+        "bpp_uri": "string",
+        "transaction_id": "string",
+        "message_id": "string",
+        "timestamp": "2021-03-23T10:00:40.065Z",
+        "key": "string",
+        "ttl": "string"
+    },
+    "message": {
+        "order": {
+            "items": [
+                {
+                    "id": "./retail.kirana/ind.blr/pooja-stores.brown-bread-400gm@lrdn.bpp.shopez.com.item",
+                    "price" : {
+                        "currency": "INR",
+                        "value": "40"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "id": "./retail.kirana/ind.blr/pooja-stores.goodlife-milk-toned-1L@lrdn.bpp.shopez.com.item",
+                    "price" : {
+                        "currency": "INR",
+                        "value": "60"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": 2
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "180"
+                },
+                "breakup": [
+                    {
+                        "title": "Brown Bread 400 gm",
+                        "price": {
+                            "currency": "INR",
+                            "value": "40"
+                        }
+                    },
+                    {
+                        "title": "Good Life Toned Milk 1L",
+                        "price": {
+                            "currency": "INR",
+                            "value": "120"
+                        }
+                    }
+                ],
+                "ttl": "P4D"
+            }
+        }
+    }
+}

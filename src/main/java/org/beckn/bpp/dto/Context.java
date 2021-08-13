@@ -3,6 +3,7 @@ package org.beckn.bpp.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,13 +14,14 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.toMap;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Context {
     private String domain;
-    private String country; //TODO Country.code
-    private String city; //TODO City.code
+    private String country;
+    private String city;
     private ActionEnum action;
     @JsonProperty("core_version")
     private String coreVersion;
@@ -53,7 +55,7 @@ public class Context {
         status("status"),
         track("track"),
         cancel("cancel"),
-        feedback("feedback"),
+        rating("rating"),
         support("support"),
         on_search("on_search"),
         on_select("on_select"),
@@ -62,8 +64,8 @@ public class Context {
         on_update("on_update"),
         on_status("on_status"),
         on_track("on_track"),
-        ON_CANCEL("on_cancel"),
-        on_cancel("on_feedback"),
+        on_cancel("on_cancel"),
+        on_rating("on_rating"),
         on_support("on_support"),
         ack("ack");
 
