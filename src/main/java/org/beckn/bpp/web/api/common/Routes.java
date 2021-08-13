@@ -15,4 +15,8 @@ public class Routes {
     public static final String UPDATE_API = BASE_URI + "/update";
     public static final String RATING_API = BASE_URI + "/rating";
     public static final String SUPPORT_API = BASE_URI + "/support";
+
+    public static final String CANCELLATION_REASONS_API = BASE_URI + "/get_cancellation_reasons";
+    public static final String RETURN_REASONS_API = BASE_URI + "/get_return_reasons";
+    public static final String RATING_CATEGORIES_API = BASE_URI + "/get_rating_categories";
 }
