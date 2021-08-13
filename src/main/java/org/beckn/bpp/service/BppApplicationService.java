@@ -3,6 +3,7 @@ package org.beckn.bpp.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.beckn.bpp.client.BppApiClient;
 import org.beckn.bpp.common.RestApiClient;
+import org.beckn.bpp.dto.Context;
 import org.beckn.bpp.dto.OnSearchRequest;
 import org.beckn.bpp.dto.Response;
 import org.beckn.bpp.dto.SearchRequest;
@@ -54,7 +55,7 @@ public class BppApplicationService {
         }
         //TODO: Call BAP on_search api with the search response
         var url = lookUp(headers);
-        var response = apiClient.post(url[0] + "/on_search",
+        var response = apiClient.post(url[0] + Context.ActionEnum.on_search,
                 constructResponseHeaders(),
                 searchResponse,
                 OnSearchRequest.class);
@@ -88,7 +89,7 @@ public class BppApplicationService {
      */
     private String[] lookUp(HttpHeaders headers) {
         var publicKey = "";
-        var uri = "http://localhost:8081/bap";
+        var uri = "http://localhost:8081/bap/";
         return new String[]{uri, publicKey};
     }
 }
