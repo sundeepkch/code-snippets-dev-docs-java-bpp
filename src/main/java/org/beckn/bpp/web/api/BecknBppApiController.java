@@ -99,4 +99,27 @@ public class BecknBppApiController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping(Routes.CANCELLATION_REASONS_API)
+    public ResponseEntity getCancellationReasons(
+            @RequestHeader HttpHeaders headers,
+            @RequestBody Context context) {
+        var response = bppApplicationService.getCancellationReasons(context, headers);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping(Routes.RETURN_REASONS_API)
+    public ResponseEntity getReturnReasons(
+            @RequestHeader HttpHeaders headers,
+            @RequestBody Context context) {
+        var response = bppApplicationService.getReturnReasons(context, headers);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping(Routes.RATING_CATEGORIES_API)
+    public ResponseEntity getRatingCategories(
+            @RequestHeader HttpHeaders headers,
+            @RequestBody Context context) {
+        var response = bppApplicationService.getRatingCategories(context, headers);
+        return ResponseEntity.ok(response);
+    }
 }

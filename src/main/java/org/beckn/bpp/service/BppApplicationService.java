@@ -37,7 +37,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         //TODO: Fetch the data based on the request
@@ -56,7 +55,6 @@ public class BppApplicationService {
                 constructResponseHeaders(),
                 searchResponse,
                 OnSearchRequest.class);
-        System.out.println(response);
         return Response.of("ACK", null);
     }
 
@@ -65,7 +63,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         // get data for the selected items
@@ -78,8 +75,6 @@ public class BppApplicationService {
                 selectRequest,
                 OnSelectRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -88,7 +83,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onInitRequest = bppClient.initializeOrder();
@@ -100,7 +94,6 @@ public class BppApplicationService {
                 onInitRequest,
                 OnInitRequest.class);
 
-        System.out.println(response);
 
         return Response.of("ACK", null);
     }
@@ -110,7 +103,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onConfirmRequest = bppClient.confirmOrder();
@@ -122,8 +114,6 @@ public class BppApplicationService {
                 onConfirmRequest,
                 OnConfirmRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -132,7 +122,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onStatusRequest = bppClient.getStatus();
@@ -144,8 +133,6 @@ public class BppApplicationService {
                 onStatusRequest,
                 OnStatusRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -154,7 +141,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onTrackRequest = bppClient.getTracking();
@@ -166,8 +152,6 @@ public class BppApplicationService {
                 onTrackRequest,
                 OnTrackRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -176,7 +160,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onCancelRequest = bppClient.getCancelledOrder();
@@ -188,8 +171,6 @@ public class BppApplicationService {
                 onCancelRequest,
                 OnCancelRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -198,7 +179,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onUpdateRequest = bppClient.updateOrder();
@@ -210,8 +190,6 @@ public class BppApplicationService {
                 onUpdateRequest,
                 OnUpdateRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -220,7 +198,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onRatingRequest = bppClient.getFeedbackOnRating();
@@ -232,8 +209,6 @@ public class BppApplicationService {
                 onRatingRequest,
                 OnRatingRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
     }
 
@@ -242,7 +217,6 @@ public class BppApplicationService {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
         //TODO: Construct and return error
-        System.out.println("Is headers valid :: " + isHeadersValid);
         if (!isHeadersValid) return null;
 
         onSupportRequest = bppClient.getSupportContact();
@@ -254,9 +228,40 @@ public class BppApplicationService {
                 onSupportRequest,
                 OnSupportRequest.class);
 
-        System.out.println(response);
-
         return Response.of("ACK", null);
+    }
+
+    public List<Option> getCancellationReasons(Context context, HttpHeaders headers) {
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        if (!isHeadersValid) return null;
+
+        var reasons = List.<Option>of();
+
+        return reasons;
+    }
+
+    public List<Option> getReturnReasons(Context context, HttpHeaders headers) {
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        if (!isHeadersValid) return null;
+
+        var reasons = List.<Option>of();
+
+        return reasons;
+    }
+
+    public List<RatingCategories> getRatingCategories(Context context, HttpHeaders headers) {
+        // Validate the headers
+        var isHeadersValid = validateHeaders(headers);
+        //TODO: Construct and return error
+        if (!isHeadersValid) return null;
+
+        var categories = List.<RatingCategories>of();
+
+        return categories;
     }
 
     private boolean validateHeaders(HttpHeaders headers) {
