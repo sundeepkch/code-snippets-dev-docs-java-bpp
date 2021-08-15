@@ -36,20 +36,20 @@ public class BppApplicationService {
         var searchResponse = new OnSearchRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
-        //TODO: Fetch the data based on the request
+        // Fetch the data based on the request
         var requestIntent = request.getMessage().getIntent();
         if (requestIntent.getProvider() != null) {
-            //TODO Search based on the given provider info
+            // Search based on the given provider info
             searchResponse = bppClient.getDataByProvider();
         }
         if (requestIntent.getFulfillment() != null) {
-            //TODO Search based on the given fulfillment info
+            // Search based on the given fulfillment info
             searchResponse = bppClient.getDataByFulfillmentProvider();
         }
-        //TODO: Call BAP on_search api with the search response
+        // Call BAP on_search api with the search response
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_search,
                 constructResponseHeaders(),
@@ -62,13 +62,13 @@ public class BppApplicationService {
         var selectRequest = new OnSelectRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         // get data for the selected items
         selectRequest = bppClient.getSelectedItemsData();
 
-        //TODO: Call BAP on_select api with the search response
+        // Call BAP on_select api with the search response
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_select,
                 constructResponseHeaders(),
@@ -82,12 +82,12 @@ public class BppApplicationService {
         var onInitRequest = new OnInitRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onInitRequest = bppClient.initializeOrder();
 
-        //TODO: Call BAP on_select api with the search response
+        // Call BAP on_select api with the search response
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_init,
                 constructResponseHeaders(),
@@ -102,12 +102,12 @@ public class BppApplicationService {
         var onConfirmRequest = new OnConfirmRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onConfirmRequest = bppClient.confirmOrder();
 
-        //TODO: Call BAP on_confirm api
+        // Call BAP on_confirm api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_confirm,
                 constructResponseHeaders(),
@@ -121,12 +121,12 @@ public class BppApplicationService {
         var onStatusRequest = new OnStatusRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onStatusRequest = bppClient.getStatus();
 
-        //TODO: Call BAP on_status api
+        // Call BAP on_status api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_status,
                 constructResponseHeaders(),
@@ -140,12 +140,12 @@ public class BppApplicationService {
         var onTrackRequest = new OnTrackRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onTrackRequest = bppClient.getTracking();
 
-        //TODO: Call BAP on_track api
+        // Call BAP on_track api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_track,
                 constructResponseHeaders(),
@@ -159,12 +159,12 @@ public class BppApplicationService {
         var onCancelRequest = new OnCancelRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onCancelRequest = bppClient.getCancelledOrder();
 
-        //TODO: Call BAP on_cancel api
+        // Call BAP on_cancel api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_cancel,
                 constructResponseHeaders(),
@@ -178,12 +178,12 @@ public class BppApplicationService {
         var onUpdateRequest = new OnUpdateRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onUpdateRequest = bppClient.updateOrder();
 
-        //TODO: Call BAP on_update api
+        // Call BAP on_update api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_update,
                 constructResponseHeaders(),
@@ -197,12 +197,12 @@ public class BppApplicationService {
         var onRatingRequest = new OnRatingRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onRatingRequest = bppClient.getFeedbackOnRating();
 
-        //TODO: Call BAP on_rating api
+        // Call BAP on_rating api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_rating,
                 constructResponseHeaders(),
@@ -216,12 +216,12 @@ public class BppApplicationService {
         var onSupportRequest = new OnSupportRequest();
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         onSupportRequest = bppClient.getSupportContact();
 
-        //TODO: Call BAP on_support api
+        // Call BAP on_support api
         var url = lookUp(headers);
         var response = apiClient.post(url[0] + Context.ActionEnum.on_support,
                 constructResponseHeaders(),
@@ -234,7 +234,7 @@ public class BppApplicationService {
     public List<Option> getCancellationReasons(Context context, HttpHeaders headers) {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
         var reasons = List.<Option>of();
@@ -245,9 +245,10 @@ public class BppApplicationService {
     public List<Option> getReturnReasons(Context context, HttpHeaders headers) {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
+        // Get the available list of return reasons
         var reasons = List.<Option>of();
 
         return reasons;
@@ -256,16 +257,17 @@ public class BppApplicationService {
     public List<RatingCategories> getRatingCategories(Context context, HttpHeaders headers) {
         // Validate the headers
         var isHeadersValid = validateHeaders(headers);
-        //TODO: Construct and return error
+        // Construct and return error
         if (!isHeadersValid) return null;
 
+        // Get the available list of rating categories
         var categories = List.<RatingCategories>of();
 
         return categories;
     }
 
     private boolean validateHeaders(HttpHeaders headers) {
-        //TODO: logic to validate the headers
+        // logic to validate the headers
         return !CollectionUtils.isEmpty(headers.get(HttpHeaders.AUTHORIZATION)) ||
                 !CollectionUtils.isEmpty(headers.get(HttpHeaders.AUTHORIZATION));
     }
@@ -277,7 +279,7 @@ public class BppApplicationService {
      */
     private HttpHeaders constructResponseHeaders() {
         var headers = new HttpHeaders();
-        var authHeader = ""; //TODO: Construct the auth header for response
+        var authHeader = ""; // Construct the auth header for response
         headers.put(HttpHeaders.AUTHORIZATION, List.of(authHeader));
         return headers;
     }
