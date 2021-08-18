@@ -9,7 +9,7 @@ import java.io.IOException;
 @Component
 public class BppApiClient {
 
-    public OnSearchRequest getDataByFulfillmentProvider() {
+    public OnSearchRequest getSampleSearchResponse() {
         var inJson = BppApiClient.class.getResourceAsStream("/responses/on_search/return_fulfillment_catalog_with_providers.json");
         try {
             return new ObjectMapper().readValue(inJson, OnSearchRequest.class);
@@ -29,7 +29,7 @@ public class BppApiClient {
         return new OnSearchRequest();
     }
 
-    public OnSelectRequest getSelectedItemsData() {
+    public OnSelectRequest getSampleSelectResponse() {
         var inJson = BppApiClient.class.getResourceAsStream("/responses/on_select/return_quote.json");
         try {
             return new ObjectMapper().readValue(inJson, OnSelectRequest.class);
